@@ -176,7 +176,7 @@ int main()
     cout << "Let's get to know you" << endl;
     cout << "Enter Company's Name: " << endl;
     getline(cin, companyName);
-    cout << "Enter Company's Tag Line : " << endl;
+    cout << "Enter Company's Tag Line: " << endl;
     getline(cin, companyTagLine);
     cout << endl;
 
@@ -228,6 +228,9 @@ int main()
 
                 switch (choice)
                 {
+                case 0:
+                    socialMediaLoopControl = 0;
+                    break;
                 case 1:
                 {
 
@@ -235,9 +238,9 @@ int main()
                     cout << "Enter quantity: ";
                     cin >> quantity;
 
-                    Instagram *s = new Instagram();
+                    Instagram *productInstagram = new Instagram();
 
-                    p = (Product *)s;
+                    p = (Product *)productInstagram;
 
                     p->setCompanyName(companyName);
                     p->setTagLine(companyTagLine);
@@ -248,9 +251,25 @@ int main()
                     products.push_back(p);
                 }
                 break;
-                case 0:
-                    socialMediaLoopControl = 0;
-                    break;
+                case 2:
+                {
+
+                    int quantity = 0;
+                    cout << "Enter quantity: ";
+                    cin >> quantity;
+
+                    Facebook *productFacebook = new Facebook();
+                    p = (Product *)productFacebook;
+
+                    p->setCompanyName(companyName);
+                    p->setTagLine(companyTagLine);
+                    p->setQuantity(quantity);
+
+                    cout << endl;
+                    p->checkout();
+                    products.push_back(p);
+                }
+                break;
                 default:
                     cout << "Seems like you have enterted an invalid choice.\nPlease try again..." << endl;
                     break;
