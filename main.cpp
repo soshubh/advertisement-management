@@ -246,7 +246,10 @@ int main()
                     p->setTagLine(companyTagLine);
                     p->setQuantity(quantity);
 
-                    cout << endl;
+                    cout << endl
+                         << "Added to cart:" << endl
+                         << endl;
+
                     p->checkout();
                     products.push_back(p);
                 }
@@ -265,7 +268,32 @@ int main()
                     p->setTagLine(companyTagLine);
                     p->setQuantity(quantity);
 
-                    cout << endl;
+                    cout << endl
+                         << "Added to cart:" << endl
+                         << endl;
+
+                    p->checkout();
+                    products.push_back(p);
+                }
+                break;
+                case 3:
+                {
+
+                    int quantity = 0;
+                    cout << "Enter quantity: ";
+                    cin >> quantity;
+
+                    Youtube *productYoutube = new Youtube();
+                    p = (Product *)productYoutube;
+
+                    p->setCompanyName(companyName);
+                    p->setTagLine(companyTagLine);
+                    p->setQuantity(quantity);
+
+                    cout << endl
+                         << "Added to cart:" << endl
+                         << endl;
+
                     p->checkout();
                     products.push_back(p);
                 }
