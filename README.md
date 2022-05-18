@@ -1,2 +1,2 @@
-# advertisement-management
-Advertisement Management using C++ 
+# Mini Project | NIT Jamshedpur
+Advertisement Management using C++
