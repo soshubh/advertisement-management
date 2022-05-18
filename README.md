@@ -1,5 +1,6 @@
 # Mini Project | NIT Jamshedpur
-Advertisement Management using C++
+
+> Advertisement Management using C++
 
 ## Types covered:
 
