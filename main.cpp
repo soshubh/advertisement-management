@@ -387,11 +387,9 @@ int main()
     string companyName, companyTagLine;
     cout << "-------------------------" << endl;
     cout << "Welcome to Grow Ad-Agency" << endl;
-    cout << "\"Grow but fast and smart\"" << endl
-         << endl;
-    cout << "We provide marketing services to help grow your business/companys!" << endl;
-    cout << "-------------------------" << endl
-         << endl;
+    cout <<"\"Sharing you and your company with the world\"" << endl << endl;
+    cout << "We are provide marketing services to help grow your business/companys!" << endl;
+    cout << "-------------------------" << endl << endl;
 
     cout << "Your business/companys detail" << endl;
     cout << "Enter Company's Name : " << endl;
