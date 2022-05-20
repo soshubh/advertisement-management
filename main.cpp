@@ -11,11 +11,12 @@ protected:
     string tagLine;
     double price;
     int quantity;
+    int hour;
 
 public:
     Product()
     {
-        price = 0, quantity = 0;
+        price = 0, quantity = 0, hour = 0;
     }
     virtual void setCompanyName(string s) = 0;
     virtual void setTagLine(string s) = 0;
@@ -53,7 +54,6 @@ public:
         cout << "Name: " << name << endl;
         cout << "Company Name: " << companyName << endl;
         cout << "Tagline: " << tagLine << endl;
-
         cout << "Quantity: " << quantity << endl;
         cout << fixed << setprecision(2) << "Price: Rs." << price << endl;
     }
@@ -137,8 +137,7 @@ public:
 
     void checkout()
     {
-        cout << endl
-             << "Type: " << type << endl;
+        cout << "Type: " << type << endl;
         cout << "Name: " << name << endl;
         cout << "Company Name: " << companyName << endl;
         cout << "Tagline: " << tagLine << endl;
@@ -159,6 +158,224 @@ public:
     }
 };
 
+// Classes of TV Ad marketing
+
+class VideoAd : protected Product
+{
+public:
+    VideoAd() : Product()
+    {
+        name = "Video Ad";
+        type = "TV";
+    }
+
+    void setCompanyName(string s)
+    {
+        companyName = s;
+    }
+
+    void setTagLine(string s)
+    {
+        tagLine = s;
+    }
+
+    void checkout()
+    {
+        cout << "Type: " << type << endl;
+        cout << "Name: " << name << endl;
+        cout << "Company Name: " << companyName << endl;
+        cout << "Tagline: " << tagLine << endl;
+
+        cout << "Time(in seconds): " << quantity << endl;
+        cout << fixed << setprecision(2) << "Price: Rs." << price << endl;
+    }
+
+    void setQuantity(int n)
+    {
+        quantity = quantity + n;
+        price = price + 500 * n;
+    }
+
+    double getPrice()
+    {
+        return price;
+    }
+};
+
+class LBand : protected Product
+{
+public:
+    LBand() : Product()
+    {
+        name = "L-Band";
+        type = "TV";
+    }
+
+    void setCompanyName(string s)
+    {
+        companyName = s;
+    }
+
+    void setTagLine(string s)
+    {
+        tagLine = s;
+    }
+
+    void checkout()
+    {
+        cout << "Type: " << type << endl;
+        cout << "Name: " << name << endl;
+        cout << "Company Name: " << companyName << endl;
+        cout << "Tagline: " << tagLine << endl;
+
+        cout << "Time(in days): " << quantity << endl;
+        cout << fixed << setprecision(2) << "Price: Rs." << price << endl;
+    }
+
+    void setQuantity(int n)
+    {
+        quantity = quantity + n;
+        price = price + 30000 * n;
+    }
+
+    double getPrice()
+    {
+        return price;
+    }
+};
+
+class Scroller : protected Product
+{
+public:
+    Scroller() : Product()
+    {
+        name = "Scroller";
+        type = "TV";
+    }
+
+    void setCompanyName(string s)
+    {
+        companyName = s;
+    }
+
+    void setTagLine(string s)
+    {
+        tagLine = s;
+    }
+
+    void checkout()
+    {
+        cout << "Type: " << type << endl;
+        cout << "Name: " << name << endl;
+        cout << "Company Name: " << companyName << endl;
+        cout << "Tagline: " << tagLine << endl;
+
+        cout << "Time(in days): " << quantity << endl;
+        cout << fixed << setprecision(2) << "Price: Rs." << price << endl;
+    }
+
+    void setQuantity(int n)
+    {
+        quantity = quantity + n;
+        price = price + 40000 * n;
+    }
+
+    double getPrice()
+    {
+        return price;
+    }
+};
+
+// Classes of Poster/Banner
+
+// Class for Poster
+// Price: Rs 1.5 per poster
+class PosterAd : protected Product
+{
+public:
+    PosterAd() : Product()
+    {
+        name = "Poster";
+        type = "Poster/Billboard";
+    }
+
+    void setCompanyName(string s)
+    {
+        companyName = s;
+    }
+
+    void setTagLine(string s)
+    {
+        tagLine = s;
+    }
+
+    void checkout()
+    {
+        cout << "Type: " << type << endl;
+        cout << "Name: " << name << endl;
+        cout << "Company Name: " << companyName << endl;
+        cout << "Tagline: " << tagLine << endl;
+
+        cout << "Unite(Number of pices): " << quantity << endl;
+        cout << fixed << setprecision(2) << "Price: Rs." << price << endl;
+    }
+
+    void setQuantity(int n)
+    {
+        quantity = quantity + n;
+        price = price + 1.5 * n;
+    }
+
+    double getPrice()
+    {
+        return price;
+    }
+};
+
+// Class for Billboard
+// Price: Rs 45,000 per BillboardAd
+class BillboardAd : protected Product
+{
+public:
+    BillboardAd() : Product()
+    {
+        name = "Billboard";
+        type = "Poster/Billboard";
+    }
+
+    void setCompanyName(string s)
+    {
+        companyName = s;
+    }
+
+    void setTagLine(string s)
+    {
+        tagLine = s;
+    }
+
+    void checkout()
+    {
+        cout << "Type: " << type << endl;
+        cout << "Name: " << name << endl;
+        cout << "Company Name: " << companyName << endl;
+        cout << "Tagline: " << tagLine << endl;
+
+        cout << "Unite(Number of pices): " << quantity << endl;
+        cout << fixed << setprecision(2) << "Price: Rs." << price << endl;
+    }
+
+    void setQuantity(int n)
+    {
+        quantity = quantity + n;
+        price = price + 45000 * n;
+    }
+
+    double getPrice()
+    {
+        return price;
+    }
+};
+
 // Main function
 int main()
 {
@@ -166,35 +383,42 @@ int main()
     // Vector products to store items in cart
     vector<Product *> products;
     Product *p;
+
     string companyName, companyTagLine;
-
-    cout << "Welcome to Nub Ad Agency" << endl
+    cout << "-------------------------" << endl;
+    cout << "Welcome to Grow Ad-Agency" << endl;
+    cout << "\"Grow but fast and smart\"" << endl
          << endl;
-    cout << "We provide marketing services to help grow you and your company" << endl
+    cout << "We provide marketing services to help grow your business/companys!" << endl;
+    cout << "-------------------------" << endl
          << endl;
 
-    cout << "Let's get to know you" << endl;
-    cout << "Enter Company's Name: " << endl;
+    cout << "Your business/companys detail" << endl;
+    cout << "Enter Company's Name : " << endl;
     getline(cin, companyName);
-    cout << "Enter Company's Tag Line: " << endl;
+    cout << "Enter Company's Tag Line : " << endl;
     getline(cin, companyTagLine);
     cout << endl;
+    cout << "-------------------------" << endl;
 
     int packageLoopControl = 1;
     while (packageLoopControl)
     {
 
-        cout << "Here are the Packages we offer: " << endl
-             << endl;
+        cout << "Here are the Packages we offer" << endl;
+        cout << "-------------------------" << endl;
         cout << "1. View Social Media Marketing Package" << endl;
+        cout << "2. Tv Advertising" << endl;
+        cout << "3. Poster/Banner Advertising" << endl;
         cout << "4. Checkout/Bill Payment" << endl;
-        cout << "5. Exit" << endl
-             << endl;
-        cout << "Enter choice: ";
-        int ch;
-        cin >> ch;
+        cout << "5. Exit" << endl;
+        cout << "-------------------------" << endl;
+        cout << "Enter your choice : ";
+        int packageChoice;
+        cin >> packageChoice;
+        cout << "-------------------------" << endl;
 
-        switch (ch)
+        switch (packageChoice)
         {
         case 1:
         {
@@ -203,30 +427,27 @@ int main()
             while (socialMediaLoopControl)
             {
                 cout << endl
-                     << "Welcome to the social media marketing package." << endl
-                     << endl;
-                cout << "Here are the following deals you can grab: " << endl
+                     << "Welcome to the social media marketing package!" << endl;
+
+                cout << "Here are the following deals you can grab-" << endl
                      << endl;
                 cout << "1. Instagram deal" << endl;
-                cout << "Rs. 8,000 per 10,000 impressions" << endl
-                     << endl;
+                cout << " (Rs. 8,000 per 10,000 impressions)" << endl;
 
                 cout << "2. Meta (Facebook) deal" << endl;
-                cout << "Rs. 9,000 per 10,000 impressions" << endl
-                     << endl;
+                cout << " (Rs. 9,000 per 10,000 impressions)" << endl;
 
                 cout << "3. Youtube deal" << endl;
-                cout << "Rs. 9,000 per 1,000 impressions" << endl
-                     << endl;
+                cout << " (Rs. 9,000 per 1,000 impressions)" << endl;
 
                 cout << "Which deal are you interested in? " << endl
-                     << "(Press 0 to go back)" << endl
-                     << "Enter choice: ";
+                     << "(Else press 0 to go back)" << endl
+                     << "Enter your choice : ";
 
-                int choice;
-                cin >> choice;
+                int socialChoice;
+                cin >> socialChoice;
 
-                switch (choice)
+                switch (socialChoice)
                 {
                 case 0:
                     socialMediaLoopControl = 0;
@@ -235,7 +456,7 @@ int main()
                 {
 
                     int quantity = 0;
-                    cout << "Enter quantity: ";
+                    cout << "Enter quantity : ";
                     cin >> quantity;
 
                     Instagram *productInstagram = new Instagram();
@@ -247,7 +468,7 @@ int main()
                     p->setQuantity(quantity);
 
                     cout << endl
-                         << "Added to cart:" << endl
+                         << "Added to cart :" << endl
                          << endl;
 
                     p->checkout();
@@ -305,6 +526,189 @@ int main()
             }
         }
         break;
+
+        case 2:
+        {
+            int tvLoopControl = 1;
+            while (tvLoopControl)
+            {
+                cout << endl
+                     << "Welcome to the Tv marketing package!" << endl;
+
+                cout << "Here are the following deals you can grab-" << endl
+                     << endl;
+                cout << "1. Video Ad" << endl;
+                cout << " (Rs. 500/second)" << endl;
+
+                cout << "2. L-Band Ad" << endl;
+                cout << " (Rs. 30,000/day )" << endl;
+
+                cout << "3. Scroller Ad" << endl;
+                cout << " (Rs. 40,000/day )" << endl;
+
+                cout << "Which deal are you interested in? " << endl
+                     << "(Else press 0 to go back)" << endl
+                     << "Enter your choice : ";
+
+                int tvChoice;
+                cin >> tvChoice;
+
+                switch (tvChoice)
+                {
+                case 0:
+                    tvLoopControl = 0;
+                    break;
+                case 1:
+                {
+
+                    int sec = 0;
+                    cout << "Enter Time(in second) : ";
+                    cin >> sec;
+
+                    VideoAd *productVideoAd = new VideoAd();
+
+                    p = (Product *)productVideoAd;
+
+                    p->setCompanyName(companyName);
+                    p->setTagLine(companyTagLine);
+                    p->setQuantity(sec);
+
+                    cout << endl
+                         << "Added to cart :" << endl
+                         << endl;
+
+                    p->checkout();
+                    products.push_back(p);
+                }
+                break;
+                case 2:
+                {
+
+                    int day = 0;
+                    cout << "Enter Time(in day) : ";
+                    cin >> day;
+
+                    LBand *productLBand = new LBand();
+
+                    p = (Product *)productLBand;
+
+                    p->setCompanyName(companyName);
+                    p->setTagLine(companyTagLine);
+                    p->setQuantity(day);
+
+                    cout << endl
+                         << "Added to cart :" << endl
+                         << endl;
+
+                    p->checkout();
+                    products.push_back(p);
+                }
+                break;
+                case 3:
+                {
+
+                    int day = 0;
+                    cout << "Enter Time(in day) : ";
+                    cin >> day;
+
+                    Scroller *productScroller = new Scroller();
+
+                    p = (Product *)productScroller;
+
+                    p->setCompanyName(companyName);
+                    p->setTagLine(companyTagLine);
+                    p->setQuantity(day);
+
+                    cout << endl
+                         << "Added to cart :" << endl
+                         << endl;
+
+                    p->checkout();
+                    products.push_back(p);
+                }
+                break;
+                }
+            }
+        }
+        break;
+
+        case 3:
+        {
+            int posterLoopControl = 1;
+            while (posterLoopControl)
+            {
+                cout << endl
+                     << "Welcome to the Poster/Billboard marketing package!" << endl;
+
+                cout << "Here are the following deals you can grab-" << endl
+                     << endl;
+                cout << "1. Poster" << endl;
+                cout << " (Rs. 1.5/piece)" << endl;
+
+                cout << "2. Billboard" << endl;
+                cout << " (Rs. 45,000/piece )" << endl;
+
+                cout << "Which deal are you interested in? " << endl
+                     << "(Else press 0 to go back)" << endl
+                     << "Enter your choice : ";
+
+                int pChoice;
+                cin >> pChoice;
+
+                switch (pChoice)
+                {
+                case 0:
+                    posterLoopControl = 0;
+                    break;
+                case 1:
+                {
+                    int unite = 0;
+                    cout << "Enter Unite(Number of pices) : ";
+                    cin >> unite;
+
+                    PosterAd *productPosterAd = new PosterAd();
+
+                    p = (Product *)productPosterAd;
+
+                    p->setCompanyName(companyName);
+                    p->setTagLine(companyTagLine);
+                    p->setQuantity(unite);
+
+                    cout << endl
+                         << "Added to cart :" << endl
+                         << endl;
+
+                    p->checkout();
+                    products.push_back(p);
+                }
+                break;
+                case 2:
+                {
+                    int unite = 0;
+                    cout << "Enter Unite(Number of pices) : ";
+                    cin >> unite;
+
+                    BillboardAd *productBillboardAd = new BillboardAd();
+
+                    p = (Product *)productBillboardAd;
+
+                    p->setCompanyName(companyName);
+                    p->setTagLine(companyTagLine);
+                    p->setQuantity(unite);
+
+                    cout << endl
+                         << "Added to cart :" << endl
+                         << endl;
+
+                    p->checkout();
+                    products.push_back(p);
+                }
+                break;
+                }
+            }
+        }
+        break;
+
         case 4:
         {
             cout << endl
@@ -323,24 +727,19 @@ int main()
 
                 for (int i = 0; i < products.size(); i++)
                 {
-
-                    cout << "Item " << i + 1 << " - " << endl
-                         << endl;
+                    cout << "-----------------------------" << endl;
+                    cout << "Item " << i + 1 << "" << endl;
+                    cout << "--------" << endl;
                     Product *p = products[i];
                     p->checkout();
-                    cout << endl;
-
                     totalPrice = totalPrice + p->getPrice();
                     itemsCount++;
                 }
-
-                cout << endl
-                     << "Total Items: " << itemsCount << endl
-                     << endl;
-                cout << endl
-                     << fixed
+                cout << "-----------------------------" << endl;
+                cout << "Total Items : " << itemsCount << endl;
+                cout << fixed
                      << setprecision(2) << "Total amount: Rs. " << totalPrice << endl;
-
+                cout << "-----------------------------" << endl;
                 int checkoutLoopControl = 1;
                 while (checkoutLoopControl)
                 {
@@ -358,9 +757,10 @@ int main()
                     {
                     case 1:
                         packageLoopControl = 0, checkoutLoopControl = 0;
-                        cout << endl
-                             << "Order confirmed. Thanks for choosing us." << endl
-                             << endl;
+
+                        cout << "--------------------------" << endl;
+                        cout << "Order confirmed. Thanks for choosing us." << endl;
+                        cout << "--------------------------";
                         break;
                     case 2:
                         checkoutLoopControl = 0;
